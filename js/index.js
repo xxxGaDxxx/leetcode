@@ -54,7 +54,7 @@
 // Увеличение на единицу дает 4321 + 1 = 4322.
 // Таким образом, результат должен быть [4,3,2,2].
 
-var plusOne = function(digits) {
+let plusOne = function(digits) {
     let a=''
     for (let i = 0; i < digits.length; i++) {
         a = a+digits[i]

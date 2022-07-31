@@ -110,7 +110,7 @@
 // console.log(merge([0],0,[2],1))
 
 
-// Учитывая целочисленный массив, numsотсортированный в неубывающем порядке , удалите дубликаты на месте , чтобы каждый уникальный элемент появлялся только один раз . Относительный порядок элементов должен быть сохранен .
+//Учитывая целочисленный массив, numsотсортированный в неубывающем порядке    , удалите дубликаты на месте , чтобы каждый уникальный элемент появлялся только один раз . Относительный порядок элементов должен быть сохранен .
 //
 //     Поскольку в некоторых языках невозможно изменить длину массива, вместо этого вы должны поместить результат в первую часть массива nums. Более формально, если есть kэлементы после удаления дубликатов, то первые kэлементы nums должны содержать окончательный результат. Неважно, что вы оставите за пределами первых  k элементов.
 //
@@ -186,28 +186,127 @@
 // Вывод: ложь
 // Объяснение: В этом случае не существует таких N и M, что N = 2 * M.
 
+// let checkIfExist = function (arr) {
+//     for (let i = 0; i < arr.length; i++) {
+//         for (let j = arr.length-1; j >= 0; j--) {
+//             console.log('i',arr[i])
+//             console.log('j',arr[j])
+//             console.log('j*2',arr[j]*2)
+//             if(arr[i]===0) {
+//                 i++
+//             }
+//
+//             if (arr[i] === arr[j] * 2) {
+//                 return true
+//             }
+//
+//         }
+//     }
+//     return false
+// };
+//
+//
+// console.log(checkIfExist([-2,0,10,-19,4,6,-8]))
+// console.log(checkIfExist([10, 2, 5, 3]))
+// console.log(checkIfExist([7, 1, 14, 11]))
+// console.log(checkIfExist([3, 1, 7, 11]))
 
-let checkIfExist = function (arr) {
-    for (let i = 0; i < arr.length; i++) {
-        for (let j = arr.length-1; j >= 0; j--) {
-            console.log('i',arr[i])
-            console.log('j',arr[j])
-            console.log('j*2',arr[j]*2)
-            if(arr[i]===0) {
-                i++
-            }
+// Дан массив целых чисел arr, возврат trueтогда и только тогда, когда это допустимый массив гор .
+//
+//     Напомним, что arr является горным массивом тогда и только тогда, когда:
+//
+// arr.length >= 3
+// Существуют некоторые iс 0 < i < arr.length - 1таким, что:
+// arr[0] < arr[1] < ... < arr[i - 1] < arr[i]
+// arr[i] > arr[i + 1] > ... > arr[arr.length - 1]
+//
+//
+//
+// Пример 1:
+//
+// Ввод: обр = [2,1]
+// Вывод: ложь
+// Пример 2:
+//
+// Ввод: обр = [3,5,5]
+// Вывод: ложь
+// Пример 3:
+//
+// Ввод: обр = [0,3,2,1]
+// Вывод: правда
 
-            if (arr[i] === arr[j] * 2) {
-                return true
-            }
+// let validMountainArray = function (arr) {
+//     if (arr.length > 2) {
+//         if (arr.length === 3) {
+//             if (arr[0] < arr[1] && arr[1] > arr[2]) {
+//                 return true
+//             }
+//             return false
+//         }
+//
+//         if (arr[0] < arr[1]) {
+//             let a = arr.indexOf(Math.max.apply(null, arr))
+//             let arr1 = arr.filter((el, i) => i <= a)
+//             let arr2 = arr.filter((el, i) => i > a)
+//
+//             if (arr2.length > 0 && arr1.length > 1) {
+//                 for (let i = 0; i < arr1.length - 1; i++) {
+//                     console.log(1)
+//                     if (arr1[i] < arr1[i + 1]) {
+//                     } else {
+//                         return false
+//                     }
+//                 }
+//
+//                 for (let i = 0; i < arr2.length - 1; i++) {
+//                     console.log(2)
+//                     if (arr2[i] > arr2[i + 1]) {
+//                     } else {
+//                         return false
+//                     }
+//                 }
+//                 console.log(3)
+//                 return true
+//             }
+//
+//             return false
+//         }
+//         return false
+//
+//     }
+//     return false
+// }
 
-        }
+
+let validMountainArray = function (arr) {
+    let  i = 0;
+    let j = arr.length - 1;
+    let n = arr.length - 1;
+    while (i + 1 < n && arr[i] < arr[i+1]) {
+        i++;
     }
-    return false
-};
+
+    while (j > 0 && arr[j] < arr[j-1]) {
+        j--;
+    }
+
+    return (i > 0 && i == j && j < n);
+}
 
 
-console.log(checkIfExist([-2,0,10,-19,4,6,-8]))
-console.log(checkIfExist([10, 2, 5, 3]))
-console.log(checkIfExist([7, 1, 14, 11]))
-console.log(checkIfExist([3, 1, 7, 11]))
+
+console.log(validMountainArray([2,1]))
+console.log(validMountainArray([1,3,2]))
+console.log(validMountainArray([3,5,5]))
+console.log(validMountainArray([0, 3, 5, 6, 5, 3, 2, 1]))
+console.log(validMountainArray([0,1,2,3,4,5,6,7,8,9]))
+console.log(validMountainArray([0, 1, 2, 1, 2]))
+
+
+
+
+
+
+
+
+

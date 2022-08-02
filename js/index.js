@@ -380,22 +380,57 @@
 
 
 
-let removeDuplicates = function(nums) {
-    let  i=1
-    for (let q=1; q<nums.length; ++q) {
-        if (nums[q] !== nums[q-1]) {
-            nums[i++] = nums[q];
+// let removeDuplicates = function(nums) {
+//     let  i=1
+//     for (let q=1; q<nums.length; ++q) {
+//         if (nums[q] !== nums[q-1]) {
+//             nums[i++] = nums[q];
+//         }
+//     }
+//
+//     nums.length = i;
+//     return nums.length
+// };
+//
+// console.log(removeDuplicates([0,0,1,1,1,2,2,3,3,4]))
+
+
+
+
+
+
+// Учитывая массив целых чисел nums, переместите все 0элементы в его конец, сохраняя относительный порядок ненулевых элементов.
+//
+//     Обратите внимание , что вы должны сделать это на месте, не создавая копию массива.
+//
+//
+//
+//     Пример 1:
+//
+// Ввод: числа = [0,1,0,3,12]
+// Вывод: [1,3,12,0,0]
+// Пример 2:
+//
+// Ввод: число = [0]
+// Вывод: [0]
+
+
+
+
+let moveZeroes = function(nums) {
+    for (let i = 0; i < nums.length; i++) {
+        let a =nums.indexOf(0)
+        if(a>=0){
+            nums.splice(a,1)
+            nums.push(0)
         }
     }
-
-    nums.length = i;
-    return nums.length
+    return nums
 };
 
-console.log(removeDuplicates([0,0,1,1,1,2,2,3,3,4]))
-
-
-
+console.log(moveZeroes([0]))
+console.log(moveZeroes([0,0,1]))
+console.log(moveZeroes([0,1,0,3,12]))
 
 
 

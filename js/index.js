@@ -278,34 +278,90 @@
 // }
 
 
-let validMountainArray = function (arr) {
-    let  i = 0;
-    let j = arr.length - 1;
-    let n = arr.length - 1;
-    while (i + 1 < n && arr[i] < arr[i+1]) {
-        i++;
+// let validMountainArray = function (arr) {
+//     let  i = 0;
+//     let j = arr.length - 1;
+//     let n = arr.length - 1;
+//     while (i + 1 < n && arr[i] < arr[i+1]) {
+//         i++;
+//     }
+//
+//     while (j > 0 && arr[j] < arr[j-1]) {
+//         j--;
+//     }
+//
+//     return (i > 0 && i == j && j < n);
+// }
+//
+//
+//
+// console.log(validMountainArray([2,1]))
+// console.log(validMountainArray([1,3,2]))
+// console.log(validMountainArray([3,5,5]))
+// console.log(validMountainArray([0, 3, 5, 6, 5, 3, 2, 1]))
+// console.log(validMountainArray([0,1,2,3,4,5,6,7,8,9]))
+// console.log(validMountainArray([0, 1, 2, 1, 2]))
+
+
+// Учитывая массив arr, замените каждый элемент в этом массиве наибольшим элементом среди элементов справа от него и замените последний элемент на -1.
+//
+// После этого верните массив.
+//
+//
+//
+//     Пример 1:
+//
+// Ввод: обр = [17,18,5,4,6,1]
+// Вывод: [18,6,6,6,1,-1]
+
+// Объяснение:
+//     - индекс 0 --> наибольший элемент справа от индекса 0 имеет индекс 1 (18).
+// - индекс 1 --> наибольший элемент справа от индекса 1 имеет индекс 4 (6).
+// - индекс 2 --> наибольший элемент справа от индекса 2 имеет индекс 4 (6).
+// - индекс 3 --> наибольший элемент справа от индекса 3 имеет индекс 4 (6).
+// - индекс 4 --> наибольший элемент справа от индекса 4 имеет индекс 5 (1).
+// - индекс 5 --> справа от индекса 5 нет элементов, поэтому ставим -1.
+// Пример 2:
+
+// Ввод: arr = [400]
+// Вывод: [-1]
+// Объяснение: Справа от индекса 0 нет элементов.
+//
+let replaceElements = function(arr) {
+    let max = -1;
+
+    for (let i = arr.length - 1; i >= 0; i--) {
+        let temp = arr[i];
+        arr[i] = max;
+        if (temp > max) max = temp;
     }
 
-    while (j > 0 && arr[j] < arr[j-1]) {
-        j--;
-    }
+    return arr
 
-    return (i > 0 && i == j && j < n);
-}
+};
 
 
+// let replaceElements = function(arr) {
+//     if (arr.length ===1){
+//         return arr =[-1]
+//     }
+//     for (let i = 0; i < arr.length; i++) {
+//        let a = arr.slice(i+1,arr.length)
+//         let b = Math.max(...a)
+//         arr.splice(i,1,b)
+//
+//     }
+//     arr.splice(arr.length-1,1,-1)
+//
+//     return arr
+//
+// };
 
-console.log(validMountainArray([2,1]))
-console.log(validMountainArray([1,3,2]))
-console.log(validMountainArray([3,5,5]))
-console.log(validMountainArray([0, 3, 5, 6, 5, 3, 2, 1]))
-console.log(validMountainArray([0,1,2,3,4,5,6,7,8,9]))
-console.log(validMountainArray([0, 1, 2, 1, 2]))
 
 
 
-
-
+console.log(replaceElements([400]))
+console.log(replaceElements([17,18,5,4,6,1]))
 
 
 

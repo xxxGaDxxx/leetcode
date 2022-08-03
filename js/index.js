@@ -359,8 +359,6 @@
 // };
 
 
-
-
 // console.log(replaceElements([400]))
 // console.log(replaceElements([17,18,5,4,6,1]))
 
@@ -379,7 +377,6 @@
 //     Неважно, что вы оставляете за возвращенным k (следовательно, это символы подчеркивания).
 
 
-
 // let removeDuplicates = function(nums) {
 //     let  i=1
 //     for (let q=1; q<nums.length; ++q) {
@@ -393,10 +390,6 @@
 // };
 //
 // console.log(removeDuplicates([0,0,1,1,1,2,2,3,3,4]))
-
-
-
-
 
 
 // Учитывая массив целых чисел nums, переместите все 0элементы в его конец, сохраняя относительный порядок ненулевых элементов.
@@ -415,29 +408,68 @@
 // Вывод: [0]
 
 
+// let moveZeroes = function(nums) {
+//     let len = nums.length;
+//     let count = 0;
+//
+//     for (let i = 0; i < len; i++) {
+//         if (nums[i] === 0) {
+//             console.log(1)
+//             nums.splice(i, 1);
+//             count++;
+//             i--;
+//         }
+//     }
+//     for (let j = 0; j < count; j++) {
+//         nums.push(0);
+//     }
+//     return nums;
+// };
 
 
-let moveZeroes = function(nums) {
-    for (let i = 0; i < nums.length; i++) {
-        let a =nums.indexOf(0)
-        if(a>=0){
-            nums.splice(a,1)
-            nums.push(0)
+// console.log(moveZeroes([0]))
+// console.log(moveZeroes([0,0,1]))
+// console.log(moveZeroes([0,1,0,3,12]))
+
+
+// Учитывая массив целых чисел nums, переместите все четные целые числа в начало массива, а затем все нечетные целые числа.
+//     Возврат любого массива , который удовлетворяет этому условию .
+//     Пример 1:
+//
+// Ввод: nums = [3,1,2,4]
+// Вывод: [2,4,3,1]
+// Объяснение: Выходы [4,2,3,1], [2,4,1,3] и [ 4,2,1,3] также будут приняты.
+//     Пример 2:
+//
+// Ввод: число = [0]
+// Вывод: [0]
+
+
+
+let sortArrayByParity = function (nums) {
+    let len = nums.length
+    let c = []
+
+    for (let i = 0; i < len; i++) {
+
+        let as = nums[i] % 2
+        if (as === 0) {
+
+            c = [nums[i]]
+            nums.splice(i, 1);
+            nums.unshift(...c)
         }
     }
+
     return nums
 };
 
-console.log(moveZeroes([0]))
-console.log(moveZeroes([0,0,1]))
-console.log(moveZeroes([0,1,0,3,12]))
 
-
-
-
-
-
-
+// console.log(sortArrayByParity([0]))
+console.log(sortArrayByParity([0,1]))
+console.log(sortArrayByParity([0,2,2]))
+// console.log(sortArrayByParity([3, 1, 2, 4]))
+// console.log(sortArrayByParity([3, 1, 2, 1, 4]))
 
 
 

@@ -445,7 +445,6 @@
 // Вывод: [0]
 
 
-
 // let sortArrayByParity = function (nums) {
 //     let len = nums.length
 //     let c = []
@@ -470,9 +469,6 @@
 // console.log(sortArrayByParity([0,2,2]))
 // console.log(sortArrayByParity([3, 1, 2, 4]))
 // console.log(sortArrayByParity([3, 1, 2, 1, 4]))
-
-
-
 
 
 // Учитывая целочисленный массив numsи целое число val, удалите все вхождения valin nums in-place . Относительный порядок элементов может быть изменен.
@@ -501,9 +497,6 @@
 // };
 // console.log(removeElement([3,2,2,3],3))
 // // console.log(removeElement([0,1,2,2,3,0,4,2],2))
-
-
-
 
 
 // Школа пытается ежегодно фотографировать всех учеников. Учащимся предлагается встать в один ряд в порядке неубывания роста. Пусть этот порядок представлен массивом целых чисел, expectedгде expected[i]— ожидаемый рост ученика в очереди.ith
@@ -539,20 +532,178 @@
 // ожидается: [1,2,3,4,5]
 // Все индексы совпадают.
 
-let heightChecker = function(heights) {
-    let a =[...heights]
-    a.sort((a,b)=>a-b)
-    let count=0
-
-    for (let i = 0; i < heights.length; i++) {
-        if(heights[i] !== a[i]){
-            ++count
-        }
-    }
-    return count
-};
-console.log(heightChecker([1,1,4,2,1,3]))
+// let heightChecker = function(heights) {
+//     let a =[...heights]
+//     a.sort((a,b)=>a-b)
+//     let count=0
+//
+//     for (let i = 0; i < heights.length; i++) {
+//         if(heights[i] !== a[i]){
+//             ++count
+//         }
+//     }
+//     return count
+// };
+// console.log(heightChecker([1,1,4,2,1,3]))
 // console.log(heightChecker([5,1,2,3,4]))
 // console.log(heightChecker([1,2,3,4,5]))
+
+
+//////////////////////////////////   не решил
+
+// Учитывая целочисленный массив nums, вернуть третье максимальное число в этом массиве. Если третьего максимума не существует, вернуть максимальное число .
+//
+//
+//
+//     Пример 1:
+//
+// Ввод: nums = [3,2,1]
+// Вывод: 1
+// Объяснение:
+//     Первый отчетливый максимум равен 3.
+// Второй отчетливый максимум равен 2.
+// Третий отчетливый максимум равен 1.
+// Пример 2:
+//
+// Ввод: nums = [1,2]
+// Вывод: 2
+// Объяснение:
+//     Первый отчетливый максимум равен 2.
+// Второй отчетливый максимум равен 1.
+// Третьего отдельного максимума не существует, поэтому вместо него возвращается максимум (2).
+//     Пример 3:
+//
+// Ввод: nums = [2,2,3,1]
+// Вывод: 1
+// Объяснение:
+//     Первый отчетливый максимум равен 3.
+// Второй отчетливый максимум равен 2 (обе двойки считаются вместе, поскольку они имеют одинаковое значение).
+// Третий отчетливый максимум равен 1.
+
+
+// let thirdMax = function (nums) {
+
+
+// let a = Math.max(...nums)
+// if (nums.length > 1) {
+//
+//     function qwe(str) {
+//         let a = str.split('')
+//
+//         let b = a.sort()
+//
+//         if (b.length === 0) {
+//             return []
+//         }
+//         let newArr = [b[0]]
+//         for (let i = 1; i < b.length; i++) {
+//             if (b[i] !== b[i - 1]) {
+//                 newArr.push(b[i])
+//             }
+//         }
+//         return newArr
+//     }
+//
+//     let wo = qwe(nums)
+//
+//     if(wo.length > 1){
+//         return nums[nums.length-i]
+//     }
+//     return a
+// }
+// return a
+
+
+//     let a = Math.max(...nums)
+//     if (nums.length <= 2) {
+//         return a
+//     } else {
+//         function sort(str) {
+//             let q = [...str]
+//
+//             let b =q.sort()
+//
+//             if (b.length === 0) {
+//                 return []
+//             }
+//             let newArr = [b[0]]
+//             for (let i = 1; i < b.length; i++) {
+//                 if (b[i] !== b[i - 1]) {
+//                     newArr.push(b[i])
+//                 }
+//             }
+//             return newArr
+//         }
+//         let wo = sort(nums)
+//         // console.log(wo)
+//         if(wo.length<=2){
+//             return a
+//         }
+//         return nums[2]
+//     }
+//
+// };
+// console.log(thirdMax([3, 2, 1]))
+// console.log(thirdMax([1, 2]))
+// console.log(thirdMax([2, 2, 3, 1]))
+// console.log(thirdMax([ 5, 2, 2 ]))
+// console.log(thirdMax([1,2,2,5,3,5]))
+
+//////////////////////////////////   не решил
+
+
+// Дан массив целых numsчисел nгде nums[i]находится в диапазоне [1, n], вернуть массив всех целых чисел в диапазоне [1, n] , которые не появляются в nums .
+//
+//
+//
+//     Пример 1:
+//
+// Ввод: числа = [4,3,2,7,8,2,3,1]
+// Вывод: [5,6]
+// Пример 2:
+//
+// Ввод: числа = [1,1]
+// Вывод: [2]
+
+
+let findDisappearedNumbers = function (nums) {
+    let arr=[]
+
+    function sort(str) {
+        let q = [...str]
+
+        let b = q.sort()
+
+        if (b.length === 0) {
+            return []
+        }
+        let newArr = [b[0]]
+        for (let i = 1; i < b.length; i++) {
+            if (b[i] !== b[i - 1]) {
+                newArr.push(b[i])
+            }
+        }
+        return newArr
+    }
+    let wo = sort(nums)
+    for (let i = 0; i < nums.length; i++) {
+        if(wo.indexOf(i+1) < 0){
+            arr.push(i+1)
+        }
+
+    }
+    return arr.length===0 ? []:arr
+
+
+}
+
+console.log(findDisappearedNumbers([4, 3, 2, 7, 8, 2, 3, 1]))
+console.log(findDisappearedNumbers([1, 1]))
+
+
+
+
+
+
 
 
